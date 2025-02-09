@@ -1,3 +1,1 @@
-  <script>
-    alert( 'Im Daniyal!' );
-  </script>
+alert("Я JavaScript!");
