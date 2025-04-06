@@ -1,20 +1,19 @@
 from django.db import models
-from django.db.models import CASCADE
-
 
 class Company(models.Model):
-  name = models.CharField(max_length=255)
-  description = models.TextField()
-  city = models.CharField(max_length=255)
-  address = models.TextField()
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    city = models.CharField(max_length=100)
+    address = models.TextField()
+
+    def __str__(self):
+        return self.name
 
 class Vacancy(models.Model):
-  name = models.CharField(max_length=255)
-  description = models.TextField()
-  salary = models.FloatField()
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    salary = models.FloatField()
+    company = models.ForeignKey(Company, related_name='vacancies', on_delete=models.CASCADE)
 
-  company = models.ForeignKey(Company, on_delete=CASCADE, related_name='vacancies')
-
-
-
-
+    def __str__(self):
+        return self.name
